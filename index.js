@@ -3,35 +3,76 @@ const fs = require('fs');
 
 inquirer.prompt([
     {
-        type: ' ',
-        name: ' ',
-        message: ' ',
+        type: 'input',
+        name: 'username',
+        message: 'What is your github username?',
     },
     {
-        type: ' ',
-        name: ' ',
-        message: ' ',
+        type: 'input',
+        name: 'gitUrl',
+        message: 'What is your github url?',
     },
     {
-        type: ' ',
-        name: ' ',
-        message: ' ',
+        type: 'input',
+        name: 'title',
+        message: 'What is the name of your Project?',
     },
     {
-        type: ' ',
-        name: ' ',
-        message: ' ',
+        type: 'input',
+        name: 'description',
+        message: 'Please add a brief description of the project',
     },
     {
-        type: ' ',
-        name: ' ',
-        message: ' ',
+        type: 'input',
+        name: 'demo',
+        message: 'Enter your demo image file path',
     },
     {
-        type: ' ',
-        name: ' ',
-        message: ' ',
+        type: 'input',
+        name: 'cloneUrl',
+        message: 'Please enter your clone repo URL',
     },
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'What are the installation steps?',
+    },
+    {
+        type: 'input',
+        name: 'installCommand',
+        message: 'What command is needed for dependencies?',
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Describe how to use your application',
+    },
+    {
+        type: 'input',
+        name: ' contribution',
+        message: 'Provide contribution instructions',
+    },
+    {
+        type: 'input',
+        name: 'testing',
+        message: 'Provide testing steps',
+    },
+    {
+        type: 'list',
+        name: 'licenses',
+        message: 'What licenses are required for this project?',
+        choices: ["Apache", "GNU", "ISC", "MIT",]
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your emai address?',
+    },
+
+
+
+
+
 ]).then(response => {
 
 
