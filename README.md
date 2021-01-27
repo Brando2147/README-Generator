@@ -1,6 +1,5 @@
 
-# Title
-ReadMe-Generator
+# ReadMe-Generator
 
 
 ## Description
