@@ -1,6 +1,5 @@
 
-# Title
-ReadMe-Generator
+# ReadMe-Generator
 
 
 ## Description
@@ -8,13 +7,13 @@ When building applications it is a necessity to have a clean and concise README 
 
 
 ## Table of Contents
-[Description](#Description)
-[About](#About)
-[Demo](#Demo)
-[Installation](#Installation)
-[Usage](#Usage)
-[License](#License)
-[Contact](#Contact)
+* [Description](#Description)
+* [About](#About)
+* [Demo](#Demo)
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [License](#License)
+* [Contact](#Contact)
 
 
 

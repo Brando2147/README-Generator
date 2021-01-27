@@ -83,7 +83,7 @@ const userPrompts = [
     {
         type: 'input',
         name: 'yourEmail',
-        message: 'What is your emai address?',
+        message: 'What is your email address?',
     }
 
 
