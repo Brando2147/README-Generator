@@ -1,7 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-inquirer.prompt([
+
+
+const userPrompts = [
     {
         type: 'input',
         name: 'username',
@@ -14,18 +16,28 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        name: 'title',
+        name: 'projectTitle',
         message: 'What is the name of your Project?',
     },
     {
         type: 'input',
-        name: 'description',
+        name: 'projectDescription',
         message: 'Please add a brief description of the project',
     },
     {
         type: 'input',
-        name: 'demo',
+        name: 'demoImg',
         message: 'Enter your demo image file path',
+    },
+    {
+        type: 'input',
+        name: 'imgAlt',
+        message: 'Description of your image',
+    },
+    {
+        type: 'input',
+        name: 'demoGif',
+        message: 'Enter your demo GIF file path',
     },
     {
         type: 'input',
@@ -44,7 +56,7 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        name: 'usage',
+        name: 'usageDetails',
         message: 'Describe how to use your application',
     },
     {
@@ -67,104 +79,109 @@ inquirer.prompt([
         type: 'input',
         name: 'email',
         message: 'What is your emai address?',
-    },
+    }
+
+]
 
 
+function generateMd(response) {
+    const readMe =
 
-
-
-]).then(response => {
-
-
-    const answers =
         `
-    # Title
-    
-    ${response.projectTitle}
-    
-    
-    ## Description
-    
-    ${response.projectDescription}
-    
-    
-    
-    ## Table of Contents
-    
-    [Description](#Description)
-    [About](#About)
-    [Built-With](#Built-with)
-    [Getting-Started](#Getting-Started)
-    [Demo](#Demo)
-    [Prerequisites](#Prerequisistes)
-    [Installation](#Installation)
-    [Tests](#Tests)
-    [Questions](#Questions)
-    [Usage](#Usage)
-    [Contributing](#Contributing)
-    [License](#License)
-    
-    
-    
-    ## About 
-    
-    [![${response.imgName}][product-screenshot]](${response.urlScreenshot})
-    
-    
-    
-    ### Built with 
-    
-    * [Bootstrap](https://getbootstrap.com)
-    * [JQuery](https://jquery.com)
-    * [Laravel](https://laravel.com)
-    
-     
-     
-    ## Getting Started
-    
-    ${response.gettingStarted}
-    
-    
-    
-    ### Prerequisites
-    
-    
-    
-    ### Installation
-    
-    
-    
-    
-    ## Demo
-    
-    
-    
-      
-    ## Contributing
-    
-    
-    
-     
-    ## License
-    
-    
-    
-    
-    ## Contact
-    
-    ${response.yourName} - ${response.yourEmail}
-    
-    Project Link: [${response.gitRepo}](${response.gitRepo})
+# Title
+
+MIT: '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licensesMIT)',
+Apache: '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.orglicenses/Apache-2.0)',
+ISC: '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC',
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.orglicenses/MPL-2.0)
 
 
-    `
+${response.projectTitle}
+
+
+## Description
+${response.projectDescription}
 
 
 
+## Table of Contents
+[Description](#Description)
+[About](#About)
+[Built-With](#Built-with)
+[Demo](#Demo)
+[Installation](#Installation)
+[Tests](#Tests)
+[Questions](#Questions)
+[Usage](#Usage)
+[Contributing](#Contributing)
+[License](#License)
 
-    fs.writeFile('Sample.md', answers, (err) => {
-        err ? console.log("oops") : console.log("Yay!")
-    })
 
-});
 
+## About 
+[![${response.imgAlt}][product-screenshot]](${response.demoImg})
+
+
+
+### Built with 
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Laravel](https://laravel.com)
+
+ 
+
+## Demo
+[demo](../assets/images/${response.demoGif}.gif)
+
+
+
+### Installation
+${response.installation}
+
+\`\`\`
+git clone ${response.gitRepo}
+\`\`\`
+Run the command:
+\`\`\`
+${response.installCommand}
+\`\`\`    
+
+  
+
+## Usage
+${response.usageDetails}
+
+
+
+## Contributing
+${response.contribution}
+
+ 
+
+## License
+${response.licenses}
+
+
+
+## Contact
+${response.yourName} - ${response.yourEmail}
+
+Project Link: [${response.gitRepo}](${response.gitRepo})
+`
+
+    return readMe;
+}
+
+// Function to write prompts to the file
+function createFile(fileName, response) {
+    fs.writeFile(fileName, response, (err) =>
+        err ? console.log(err) : console.log('ReadMe Successfully written!!'))
+}
+
+function initialize() {
+    inquirer.prompt(userPrompts).then(response =>
+        createFile('sample.md', generateMd(response)));
+}
+
+// Calls the function to start the program
+initialize();
