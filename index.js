@@ -21,6 +21,11 @@ const userPrompts = [
     },
     {
         type: 'input',
+        name: 'projectURL',
+        message: 'What is the URL of your Project?',
+    },
+    {
+        type: 'input',
         name: 'projectDescription',
         message: 'Please add a brief description of the project',
     },
@@ -61,7 +66,7 @@ const userPrompts = [
     },
     {
         type: 'input',
-        name: ' contribution',
+        name: 'contribution',
         message: 'Provide contribution instructions',
     },
     {
@@ -77,9 +82,10 @@ const userPrompts = [
     },
     {
         type: 'input',
-        name: 'email',
+        name: 'yourEmail',
         message: 'What is your emai address?',
     }
+
 
 ]
 
@@ -139,7 +145,7 @@ ${response.projectDescription}
 ${response.installation}
 
 \`\`\`
-git clone ${response.gitRepo}
+git clone ${response.cloneUrl}
 \`\`\`
 Run the command:
 \`\`\`
@@ -164,9 +170,9 @@ ${response.licenses}
 
 
 ## Contact
-${response.yourName} - ${response.yourEmail}
+${response.username} - ${response.yourEmail}
 
-Project Link: [${response.gitRepo}](${response.gitRepo})
+Project Link: [${response.projectURL}](${response.projectURL})
 `
 
     return readMe;
